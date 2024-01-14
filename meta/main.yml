@@ -1,4 +1,6 @@
 galaxy_info:
+  role_name: qbittorrent_nox
+  namespace: tychobrouwer
   author: Tycho Brouwer
   description: Install and configure qBittorrent
 

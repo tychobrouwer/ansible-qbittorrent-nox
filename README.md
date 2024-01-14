@@ -13,9 +13,13 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
+
+```yaml
     - hosts: servers
       roles:
-         - { role: qbittorrent_nox, x: 42 }
+         - { role: qbittorrent_nox, qbittorrent_nox_web_password: password123,
+             qbittorrent_nox_torrent_path: /share/video-share/Torrents }
+```
 
 License
 -------

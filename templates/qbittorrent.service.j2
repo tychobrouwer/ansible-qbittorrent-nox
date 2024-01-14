@@ -6,8 +6,8 @@ nss-lookup.target
 
 [Service] 
 Type=exec
-User={{ role_user_name }}
-ExecStart=/home/{{ role_user_name }}/bin/qbittorrent-nox
+User={{ qbittorrent_nox_user_name }}
+ExecStart=/home/{{ qbittorrent_nox_user_name }}/bin/qbittorrent-nox
 
 [Install]
 WantedBy=multi-user.target

@@ -5,20 +5,23 @@ enabled=false
 program=
 
 [BitTorrent]
-Session\DefaultSavePath={{ role_torrent_path }}
+Session\DefaultSavePath={{ qbittorrent_nox_torrent_path }}
 Session\ExcludedFileNames=
 Session\GlobalMaxRatio=-1
 Session\GlobalMaxSeedingMinutes=-1
-Session\Interface={{ role_interface }}
-Session\InterfaceName={{ role_interface }}
+Session\Interface={{ qbittorrent_nox_interface }}
+Session\InterfaceName={{ qbittorrent_nox_interface }}
 Session\MaxRatioAction=1
 Session\Port=45333
 Session\QueueingSystemEnabled=false
-Session\TempPath={{ role_torrent_path }}
+Session\TempPath={{ qbittorrent_nox_torrent_path }}
 Session\TempPathEnabled=true
 
 [Core]
 AutoDeleteAddedTorrentFile=Never
+
+[LegalNotice]
+Accepted=true
 
 [Meta]
 MigrationVersion=4
@@ -47,7 +50,7 @@ MailNotification\username=
 Scheduler\days=EveryDay
 Scheduler\end_time=@Variant(\0\0\0\xf\x4J\xa2\0)
 Scheduler\start_time=@Variant(\0\0\0\xf\x1\xb7t\0)
-WebUI\Address={{ role_address }}
+WebUI\Address={{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}
 WebUI\AlternativeUIEnabled=true
 WebUI\AuthSubnetWhitelist=192.168.1.0/24
 WebUI\AuthSubnetWhitelistEnabled=true
@@ -62,15 +65,15 @@ WebUI\HTTPS\KeyPath=
 WebUI\HostHeaderValidation=true
 WebUI\LocalHostAuth=true
 WebUI\MaxAuthenticationFailCount=5
-WebUI\Port={{ role_web_port }}
+WebUI\Port={{ qbittorrent_nox_web_port }}
 WebUI\ReverseProxySupportEnabled=false
-WebUI\RootFolder=/home/{{ role_user_name }}/VueTorrent
+WebUI\RootFolder=/home/{{ qbittorrent_nox_user_name }}/VueTorrent
 WebUI\SecureCookie=true
 WebUI\ServerDomains=*
 WebUI\SessionTimeout=3600
 WebUI\TrustedReverseProxiesList=
 WebUI\UseUPnP=true
-WebUI\Username={{ role_web_username }}
+WebUI\Username={{ qbittorrent_nox_web_username }}
 
 [RSS]
 AutoDownloader\DownloadRepacks=true
