@@ -10,6 +10,3 @@ qbittorrent_nox_web_username: torrent
 
 qbittorrent_nox_static_url: https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox
 qbittorrent_nox_vue_theme_git: https://github.com/WDaan/VueTorrent.git
-
-# qbittorrent_nox_web_password: "password"
-# qbittorrent_nox_default_save_path: "/share/video-share/Torrents"
