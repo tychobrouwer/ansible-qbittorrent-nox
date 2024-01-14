@@ -1,0 +1,15 @@
+---
+# handlers file for qbittorrent
+- name: Restart qbittorrent-nox
+  ansible.builtin.service:
+    name: qbittorrent-nox
+    state: restartedrole_interface: tun0
+role_web_username: torrent
+
+role_qbittorrent_nox_static_url: https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox
+role_vue_theme_git: https://github.com/WDaan/VueTorrent.git
+
+# role_web_password: "password"
+# role_address: 192.168.1.105
+# role_default_save_path: "/share/video-share/Torrents"
+

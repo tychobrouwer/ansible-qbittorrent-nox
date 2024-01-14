@@ -1,0 +1,85 @@
+---
+# tasks file for qbittorrent
+- name: Ensure share user group exists
+  ansible.builtin.group:
+    name: "{{ role_user_group }}"
+    gid: "{{ role_user_gid }}"
+    state: present
+
+- name: Ensure share user exists
+  ansible.builtin.user:
+    name: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+    uid: "{{ role_user_uid }}"
+    shell: /usr/sbin/nologin
+    state: present
+
+- name: Ensure qBittorrent bin folder is present
+  ansible.builtin.file:
+    path: "/home/{{ role_user_name }}/bin"
+    state: directory
+    owner: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+    mode: "0755"
+
+- name: Download qbittorrent-nox static binary
+  ansible.builtin.get_url:
+    url: "{{ role_qbittorrent_nox_static_url }}"
+    dest: "/home/{{ role_user_name }}/bin/qbittorrent-nox"
+    mode: "0755"
+    owner: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+
+- name: Ensure qBittorrent config folder is present
+  ansible.builtin.file:
+    path: "/home/{{ role_user_name }}/.config/qBittorrent"
+    state: directory
+    owner: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+    mode: "0755"
+
+- name: Ensure qBittorrent config file is on remote
+  ansible.builtin.template:
+    src: qbittorrent.conf.j2
+    dest: "/home/{{ role_user_name }}/.config/qBittorrent/qBittorrent.conf"
+    mode: "0664"
+    owner: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+    force: false
+  notify: Restart qbittorrent-nox
+
+- name: Ensure torrent download path is set
+  ansible.builtin.command: "runuser -l {{ role_user_name }} -c 'qbittorrent-nox --save-path={{ role_torrent_path }}'"
+  changed_when: false
+
+- name: Ensure qBittorrent service file is on remote
+  ansible.builtin.template:
+    src: qbittorrent.service.j2
+    dest: /etc/systemd/system/qbittorrent.service
+    mode: "0664"
+    owner: root
+    group: root
+
+- name: Clone qBittorrent theme git repo
+  ansible.builtin.git:
+    repo: "{{ role_vue_theme_git }}"
+    dest: "/home/{{ role_user_name }}/VueTorrent"
+    clone: true
+    depth: 1
+    force: true
+  notify: Restart qbittorrent-nox
+
+- name: Set theme folder permissions
+  ansible.builtin.file:
+    path: "/home/{{ role_user_name }}/VueTorrent"
+    state: directory
+    owner: "{{ role_user_name }}"
+    group: "{{ role_user_group }}"
+    mode: "0755"
+    recurse: true
+
+- name: Ensure qbittorrent service is enabled and reloaded
+  ansible.builtin.service:
+    name: qbittorrent
+    state: started
+    enabled: true

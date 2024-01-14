@@ -1,0 +1,16 @@
+---
+# vars file for qbittorrent
+role_user_name: qbittorrent
+role_user_group: qbittorrent
+role_user_uid: 1000
+role_user_gid: 1000
+role_web_port: 8080
+role_interface: tun0
+role_web_username: torrent
+
+role_qbittorrent_nox_static_url: https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox
+role_vue_theme_git: https://github.com/WDaan/VueTorrent.git
+
+# role_web_password: "password"
+# role_address: 192.168.1.105
+# role_default_save_path: "/share/video-share/Torrents"
