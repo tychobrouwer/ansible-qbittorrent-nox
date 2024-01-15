@@ -15,4 +15,4 @@
       nordvpn_is_test: true
 
     - role: ansible-qbittorrent-nox
-      qbittorrent_nox_torrent_path: "/share/video-share/Torrents"
+      qbittorrent_nox_torrent_path: /share/video-share/Torrents
