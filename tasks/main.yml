@@ -72,7 +72,7 @@
     owner: root
     group: root
 
-- name: Clone qBittorrent theme git repo
+- name: Clone qBittorrent theme git repo # noqa: latest
   ansible.builtin.git:
     repo: "{{ qbittorrent_nox_vue_theme_git }}"
     dest: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
