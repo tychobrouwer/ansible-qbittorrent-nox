@@ -24,7 +24,7 @@ Example Playbook
 ```yaml
     - hosts: servers
       roles:
-        - { role: qbittorrent_nox, qbittorrent_nox_torrent_path: /share/video-share/Torrents,
+        - { role: tychobrouwer.qbittorrent_nox, qbittorrent_nox_torrent_path: /share/video-share/Torrents,
              qbittorrent_nox_interface: tun0 }
 ```
 
