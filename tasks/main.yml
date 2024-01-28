@@ -80,8 +80,15 @@
     depth: 1
     force: true
   notify: Restart qbittorrent-nox
-  become: true
-  become_user: "{{ qbittorrent_nox_user_name }}"
+  # become: true
+  # become_user: "{{ qbittorrent_nox_user_name }}"
+
+- name: Set theme repo directory permissisions
+  ansible.builtin.file:
+    path: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
+    owner: "{{ qbittorrent_nox_user_name }}"
+    group: "{{ qbittorrent_nox_user_group }}"
+    recurse: true
 
 - name: Ensure qbittorrent service is enabled and started
   ansible.builtin.service:
