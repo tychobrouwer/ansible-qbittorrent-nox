@@ -43,6 +43,7 @@
     set -o pipefail &&
     grep 'Password_PBKDF2' /home/{{ qbittorrent_nox_user_name }}/.config/qBittorrent/qBittorrent.conf |
     sed 's/^WebUI\\Password_PBKDF2=//'
+  executable: /bin/bash
   register: qbittorrent_nox_get_password_hash
   changed_when: false
 
