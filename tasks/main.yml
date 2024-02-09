@@ -47,6 +47,7 @@
     executable: /bin/bash
   register: qbittorrent_nox_get_password
   changed_when: false
+  failed_when: false
 
 - name: Register password hash
   ansible.builtin.set_fact:
