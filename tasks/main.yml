@@ -71,6 +71,14 @@
     owner: root
     group: root
 
+- name: Create VueTorrent directory
+  ansible.builtin.file:
+    path: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
+    state: directory
+    owner: "{{ qbittorrent_nox_user_name }}"
+    group: "{{ qbittorrent_nox_user_group }}"
+    mode: "0755"
+
 - name: Add VueTorrent directory to git safe.directory
   ansible.builtin.git_config:
     scope: global
