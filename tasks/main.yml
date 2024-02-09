@@ -89,6 +89,7 @@
     clone: true
     depth: 1
     force: true
+    version: latest-release
   notify: Restart qbittorrent-nox
   # become: true
   # become_user: "{{ qbittorrent_nox_user_name }}"
