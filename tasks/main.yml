@@ -74,6 +74,12 @@
     owner: root
     group: root
 
+- name: Add VueTorrent directory to git safe.directory
+  ansible.builtin.git_config:
+    scope: global
+    name: safe.directory
+    value: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
+
 - name: Clone qBittorrent theme git repo # noqa: latest
   ansible.builtin.git:
     repo: "{{ qbittorrent_nox_vue_theme_git }}"
@@ -85,12 +91,14 @@
   # become: true
   # become_user: "{{ qbittorrent_nox_user_name }}"
 
-- name: Set theme repo directory permissisions
+- name: Set VueTorrent directory permissions
   ansible.builtin.file:
     path: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
+    state: directory
+    recurse: true
     owner: "{{ qbittorrent_nox_user_name }}"
     group: "{{ qbittorrent_nox_user_group }}"
-    recurse: true
+    mode: "0755"
 
 - name: Ensure qbittorrent service is enabled and started
   ansible.builtin.service:

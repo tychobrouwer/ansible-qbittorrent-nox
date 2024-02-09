@@ -74,7 +74,7 @@ WebUI\SessionTimeout=3600
 WebUI\TrustedReverseProxiesList=
 WebUI\UseUPnP=true
 WebUI\Username={{ qbittorrent_nox_web_username }}
-{% if qbittorrent_nox_web_password_hash is defined %}
+{% if qbittorrent_nox_web_password_hash != "" %}
 WebUI\Password_PBKDF2={{ qbittorrent_nox_web_password_hash }}
 {% endif %}
 
