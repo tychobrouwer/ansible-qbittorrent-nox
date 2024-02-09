@@ -7,6 +7,7 @@ qbittorrent_nox_user_gid: 1000
 qbittorrent_nox_web_port: 8080
 qbittorrent_nox_interface: tun0
 qbittorrent_nox_web_username: torrent
+qbittorrent_nox_torrent_path: ~/torrents
 
 qbittorrent_nox_static_url: https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/x86_64-qbittorrent-nox
 qbittorrent_nox_vue_theme_git: https://github.com/WDaan/VueTorrent.git
