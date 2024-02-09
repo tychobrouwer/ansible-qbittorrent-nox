@@ -45,12 +45,12 @@
     sed 's/^WebUI\\Password_PBKDF2=//'
   args:
     executable: /bin/bash
-  register: qbittorrent_nox_get_password_hash
+  register: qbittorrent_nox_get_password
   changed_when: false
 
 - name: Register password hash
   ansible.builtin.set_fact:
-    qbittorrent_nox_web_password_hash: "{{ qbittorrent_nox_get_password_hash.stdout }}"
+    qbittorrent_nox_web_password_hash: "{{ qbittorrent_nox_get_password.stdout }}"
 
 - name: Ensure qBittorrent config file is on remote
   ansible.builtin.template:
