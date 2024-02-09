@@ -1,5 +1,10 @@
 ---
 # tasks file for qbittorrent
+- name: Ensure git is installed
+  ansible.builtin.package:
+    name: git
+    state: present
+
 - name: Ensure qbittorrent user group exists
   ansible.builtin.group:
     name: "{{ qbittorrent_nox_user_group }}"
@@ -75,7 +80,7 @@
   ansible.builtin.git_config:
     scope: global
     name: safe.directory
-    value: "*"
+    value: /home/{{ qbittorrent_nox_user_name }}/VueTorrent
 
 - name: Clone qBittorrent theme git repo # noqa: latest
   ansible.builtin.git:
