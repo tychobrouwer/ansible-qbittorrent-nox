@@ -63,10 +63,6 @@
     force: false
   notify: Restart qbittorrent-nox
 
-- name: Ensure torrent download path is set
-  ansible.builtin.command: runuser -l {{ qbittorrent_nox_user_name }} -c 'qbittorrent-nox --save-path={{ qbittorrent_nox_torrent_path }}'
-  changed_when: false
-
 - name: Ensure qBittorrent service file is on remote
   ansible.builtin.template:
     src: qbittorrent.service.j2
@@ -106,3 +102,7 @@
     name: qbittorrent
     state: started
     enabled: true
+
+- name: Ensure torrent download path is set
+  ansible.builtin.command: runuser -l {{ qbittorrent_nox_user_name }} -c 'qbittorrent-nox --save-path={{ qbittorrent_nox_torrent_path }}'
+  changed_when: false
