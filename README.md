@@ -22,10 +22,22 @@ Example Playbook
 ----------------
 
 ```yaml
-    - hosts: servers
-      roles:
-        - { role: tychobrouwer.qbittorrent_nox, qbittorrent_nox_torrent_path: /share/video-share/Torrents,
-             qbittorrent_nox_interface: tun0 }
+- hosts: servers
+  vars:
+    qbittorrent_nox_torrent_path: /share/video-share/Torrents
+    qbittorrent_nox_interface: tun0
+
+  roles:
+    - role: tychobrouwer.qbittorrent_nox
+
+    - role: tychobrouwer.qbittorrent_nox
+      qbittorrent_nox_user_name: qbittorrent
+      qbittorrent_nox_user_group: qbittorrent
+      qbittorrent_nox_user_uid: 1000
+      qbittorrent_nox_user_gid: 1000
+      qbittorrent_nox_web_port: 8080
+      qbittorrent_nox_web_username: torrent
+      qbittorrent_nox_torrent_path: ~/torrents
 ```
 
 License
