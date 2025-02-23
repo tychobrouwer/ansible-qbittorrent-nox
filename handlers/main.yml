@@ -1,6 +1,7 @@
 ---
 # handlers file for qbittorrent
 - name: Restart qbittorrent-nox
-  ansible.builtin.service:
+  ansible.builtin.systemd:
     name: qbittorrent
     state: restarted
+    daemon_reload: true
